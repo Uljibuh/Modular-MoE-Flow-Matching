@@ -26,6 +26,7 @@ Gating: Decisive routing via temperature-annealed Gumbel-Softmax.
 
 
 
+
 📊 Results on 2D Checkerboard
 
 ![anim_particles](https://github.com/user-attachments/assets/8d53e8b6-1a03-476f-b0e6-cc81f75bc0c2)
