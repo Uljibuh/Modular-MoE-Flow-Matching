@@ -14,7 +14,8 @@ Modular Control: Zero out specific experts at test-time to observe localized man
 Diversity Objective: Cosine diversity and Coefficient of Variation (CV) losses prevent expert redundancy and collapse.
 Demonstrated Tasks: Successfully learns 2D Checkerboard and 3D Swiss Roll geometries.
 
-📐 ArchitectureThe model predicts the velocity field $v$ by gating $K$ independent expert heads:$$v(x, t) = \sum_{i=1}^{K} \alpha_i(x, t) \cdot e_i(x, t)$$
+📐 ArchitectureThe model predicts the velocity field $v$ by gating $K$ independent expert heads:
+$$v(x, t) = \sum_{i=1}^{K} \alpha_i(x, t) \cdot e_i(x, t)$$
 
 Backbone: Shared Sinusoidal Time Embeddings + LayerNorm MLP.
 
