@@ -16,10 +16,13 @@ Diverse Vector Fields: Implements a Cosine Diversity Loss to ensure experts lear
 Dynamic Gating: Features a temperature-scheduled Gumbel-Softmax to transition from soft exploration to hard, decisive routing during training.
 
 
-🧠 Architecture OverviewThe core model  consists of a shared backbone that processes position and time embeddings, followed by a gating network and a set of independent expert heads.
+🧠 Architecture Overview
+
+The core model  consists of a shared backbone that processes position and time embeddings, followed by a gating network and a set of independent expert heads.
 
 
-Flow Matching FormulationThe model learns a vector field $v_\theta(x, t)$ that pushes a base distribution $p_0$ (Gaussian noise) toward a target distribution $p_1$ (Data) following the probability flow:
+The model learns a vector field $v_\theta(x, t)$ that pushes a base distribution $p_0$ (Gaussian noise) 
+toward a target distribution $p_1$ (Data) following the probability flow:
 $$\dot{x}_t = v(x_t, t)$$
 
 MoE IntegrationThe final velocity is a weighted sum of $K$ expert predictions:
@@ -29,8 +32,11 @@ Where $\alpha$ is the routing probability provided by the gate.
 
 
 🔧 Loss FunctionsThe training objective is a multi-objective loss designed for modularity:
+
 Flow Matching Loss ($L_{fm}$): Standard MSE between predicted and target velocity.
+
 Coefficient of Variation ($L_{cv}$): Ensures load balancing so one expert doesn't collapse and take over the entire field.
+
 Cosine Diversity ($L_{div}$): Penalizes experts for pointing in the same direction:
 
 $$L_{div} = \frac{1}{n} \sum_{i < j} \frac{v_i \cdot v_j}{\|v_i\| \|v_j\|}$$
