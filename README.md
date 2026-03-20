@@ -7,6 +7,7 @@ Core concept: Unlike standard Flow Matching, the architecture partitions the gen
 allowing for Expert Knock-out—the ability to disable specific experts during inference to generate incomplete or ablated vector fields.
 
 🚀 Key Features
+
 Regional Specialization: Using a Gumbel-Softmax gate, the model learns to partition the 2D/3D space so that experts do not overlap in their responsibilities.
 
 Expert Ablation (Knock-out): Since experts are modular, you can manually zero out specific experts during inference to see how the vector field collapses or which parts of the distribution are lost.
@@ -23,15 +24,19 @@ The core model  consists of a shared backbone that processes position and time e
 
 The model learns a vector field $v_\theta(x, t)$ that pushes a base distribution $p_0$ (Gaussian noise) 
 toward a target distribution $p_1$ (Data) following the probability flow:
+
 $$\dot{x}_t = v(x_t, t)$$
 
 MoE IntegrationThe final velocity is a weighted sum of $K$ expert predictions:
+
 $$v_{final} = \sum_{i=1}^{K} \alpha_i(x, t) \cdot e_i(x, t)$$
 
 Where $\alpha$ is the routing probability provided by the gate.
 
 
-🔧 Loss FunctionsThe training objective is a multi-objective loss designed for modularity:
+🔧 Loss Functions
+
+The training objective is a multi-objective loss designed for modularity:
 
 Flow Matching Loss ($L_{fm}$): Standard MSE between predicted and target velocity.
 
@@ -42,6 +47,8 @@ Cosine Diversity ($L_{div}$): Penalizes experts for pointing in the same directi
 $$L_{div} = \frac{1}{n} \sum_{i < j} \frac{v_i \cdot v_j}{\|v_i\| \|v_j\|}$$
 
 Magnitude Regularization ($L_{mag}$): Prevents exploding gradients in dormant experts.
+
+
 
 📊 Results on 2D Checkerboard
 
