@@ -3,7 +3,7 @@
 
 Official implementation of Modular Flow Matching. This framework leverages a Mixture of Experts (MoE) backbone to decompose complex vector fields into $K$ independent, non-overlapping "programs.
 
-(Core Concept)Unlike standard Flow Matching, this architecture partitions the generative process. Each expert specializes in a specific region of the manifold, 
+Core concept: Unlike standard Flow Matching, the architecture partitions the generative process. Each expert specializes in a specific region of the manifold, 
 allowing for Expert Knock-out—the ability to disable specific experts during inference to generate incomplete or ablated vector fields.
 
 🛠 Key Features
@@ -25,6 +25,8 @@ Gating: Decisive routing via temperature-annealed Gumbel-Softmax.
 
 
 
+
+📊 Results
 
 ![anim_particles](https://github.com/user-attachments/assets/8d53e8b6-1a03-476f-b0e6-cc81f75bc0c2)
 ![anim_vfields](https://github.com/user-attachments/assets/22f3bb05-5b9e-4d62-a1ad-f5777fd05850)
