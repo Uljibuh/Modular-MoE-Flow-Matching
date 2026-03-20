@@ -1,4 +1,4 @@
-# Modular-Flow-Matching
+# Modular-MoE-Flow-Matching
 Decomposition of Vector Field Using Novel Flow Matching Framework
 
 ![anim_particles](https://github.com/user-attachments/assets/8d53e8b6-1a03-476f-b0e6-cc81f75bc0c2)
